@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nyaa~ Konwerter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Nunito:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="bg" aria-hidden="true"></div>
+  <canvas id="petals" aria-hidden="true"></canvas>
+
+  <div class="lang-switch">
+    <button id="btn-pl" class="active">PL</button>
+    <button id="btn-en">EN</button>
+  </div>
+
+  <div class="page">
+    <main>
+      <h1>99CLOSE CONVERTER ;3</h1>
+      <p class="sub" data-i18n="subtitle">YouTube, Spotify i SoundCloud do MP3, FLAC lub WAV. Bez reklam.</p>
+
+      <section class="card">
+        <label class="field" for="url" data-i18n="link_label">Link do utworu</label>
+        <div class="input-wrap">
+          <input type="text" id="url" inputmode="url" autocomplete="off" spellcheck="false"
+            placeholder="https://youtube.com/watch?v=…">
+          <span class="chip" id="chip"></span>
+        </div>
+        <div class="hint" id="hint" aria-live="polite"></div>
+
+        <fieldset class="formats">
+          <legend data-i18n="fmt_legend">Format pliku</legend>
+          <label class="fmt"><input type="radio" name="fmt" value="mp3" checked><span>MP3<small data-i18n="fmt_mp3">mały
+                plik</small></span></label>
+          <label class="fmt"><input type="radio" name="fmt" value="flac"><span>FLAC<small data-i18n="fmt_flac">bez
+                kompresji</small></span></label>
+          <label class="fmt"><input type="radio" name="fmt" value="wav"><span>WAV<small data-i18n="fmt_wav">surowy</small></span></label>
+        </fieldset>
+        <div class="note" id="note"></div>
+
+        <button class="go" id="go" data-i18n="btn_go">Konwertuj!</button>
+
+        <div class="status" id="status" aria-live="polite">
+          <div class="bar" id="bar"><i id="fill"></i></div>
+          <div class="stage"><span id="stage">Czekam w kolejce…</span><span id="pct">0%</span></div>
+          <div class="result" id="result">
+            <p class="title" id="rtitle"></p>
+            <p class="meta" id="rmeta"></p>
+            <img id="rgif" src="content/kawaii-gif.gif"
+              style="display:none; max-width:100%; border-radius:18px; margin: 0 auto 12px; border: 3px solid var(--line);">
+            <p id="rtext" style="display:none; font-weight:800; font-size:15px; color:var(--rose-d); margin:0 0 12px;">
+            </p>
+            <button class="dl" id="dl" data-i18n="btn_dl">Pobierz plik</button>
+            <button class="again" id="again" data-i18n="btn_again">Konwertuj kolejny link</button>
+          </div>
+        </div>
+      </section>
+      <p class="foot">
+        made with ❤️ by <a href="https://www.instagram.com/riphxah/" target="_blank">kawoshii</a> for <a href="https://discord.gg/ERt8m3EKFy" target="_blank">99close</a>
+      </p>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  
+  <div class="character-wrap">
+    <img id="avatar" src="content/animation1.png" alt="Postać" class="avatar-img">
+    <div class="bubble manga-bubble" id="bubble" data-i18n-key="say_idle">Wklej link do convertera aby pobrać plik!</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
