@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Beta Access - 99CLOSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: var(--bg);
+    }
+    .auth-box {
+      position: relative;
+      z-index: 10;
+      background: var(--card);
+      padding: 30px;
+      border-radius: 24px;
+      border: 3px solid var(--line);
+      text-align: center;
+      width: 90%;
+      max-width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .auth-box h2 { margin: 0 0 10px; color: var(--rose-d); font-size: 24px; }
+    .auth-box p { color: var(--muted); font-size: 14px; margin: 0 0 20px; }
+    .auth-box input {
+      width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 12px;
+      border: 2px solid var(--line); background: var(--bg); color: var(--text);
+      font-family: 'Outfit', sans-serif; text-align: center; font-weight: 700; outline: none;
+    }
+    .auth-box input:focus { border-color: var(--rose); }
+    .auth-box button {
+      width: 100%; padding: 12px; background: var(--rose); color: #fff;
+      border: none; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.2s;
+    }
+    .auth-box button:hover { filter: brightness(1.1); }
+  </style>
+</head>
+<body>
+  <div class="auth-box">
+    <h2>BETA ACCESS</h2>
+    <p>Wpisz kod dostępu z Discorda:</p>
+    <input type="password" id="auth-code" placeholder="Kod..." autocomplete="off">
+    <button id="auth-btn">Wejdź</button>
+    <p id="auth-err" style="color:#ff4b4b;font-size:13px;margin:10px 0 0;display:none;"></p>
+  </div>
+
+  <script>
+    if (localStorage.getItem("99close_beta_code") === "2424") {
+      window.location.replace("99converter.html");
+    }
+    const btn = document.getElementById("auth-btn");
+    const input = document.getElementById("auth-code");
+    const err = document.getElementById("auth-err");
+
+    function login() {
+      if (input.value === "2424") {
+        localStorage.setItem("99close_beta_code", "2424");
+        window.location.replace("99converter.html");
+      } else {
+        err.textContent = "Nieprawidłowy kod!";
+        err.style.display = "block";
+      }
+    }
+    btn.addEventListener("click", login);
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") login() });
+  </script>
+</body>
+</html>
